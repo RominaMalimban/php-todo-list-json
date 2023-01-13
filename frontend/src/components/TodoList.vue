@@ -52,20 +52,83 @@ export default {
 </script>
 
 <template>
-    <h1>ToBooList</h1>
 
-    <ul>
-        <li v-for="(task, index) in todoList" :key="index">
-            {{ task.text }}
-        </li>
-    </ul>
+    <div class="container">
+        <h1>ToBooList</h1>
 
-    <form @submit="addNewTask">
-        <input type="text" name="task" v-model="newTask">
-        <input type="submit" value="Add new task">
-    </form>
+        <div class="list">
+            <ul>
+                <li v-for="(task, index) in todoList" :key="index">
+                    {{ task.text }}
+                </li>
+            </ul>
+
+            <form @submit="addNewTask">
+                <input type="text" name="task" v-model="newTask" class="add">
+                <input type="submit" value="Add new task" class="btn">
+            </form>
+        </div>
+
+    </div>
+
 </template>
 
-<style >
+<style lang="scss" scoped>
+.container {
+    width: 50%;
+    margin: 100px auto;
+    padding: 50px 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #FBFACD;
+    border: 3px solid #DEBACE;
+    border-radius: 10px;
 
+    h1 {
+        text-align: center;
+        font-size: 40px;
+        margin-bottom: 40px;
+        color: #7F669D;
+    }
+
+    .list {
+        padding: 30px;
+        border-radius: 10px;
+        background-color: #DEBACE;
+    }
+
+    ul li {
+        margin-bottom: 10px;
+        color: #7F669D;
+        font-size: 18px;
+    }
+
+    form {
+        margin-top: 30px;
+
+        .btn {
+            margin-left: 10px;
+            padding: 5px 10px;
+            background-color: #DEBACE;
+            border: 2px solid #7F669D;
+            border-radius: 10px;
+            color: #7F669D;
+            font-weight: bold;
+
+            &:hover {
+                color: #FBFACD;
+                background-color: #DEBACE;
+            }
+        }
+
+        .add {
+            height: 30px;
+            width: 250px;
+            padding: 5px;
+        }
+    }
+
+
+}
 </style>
