@@ -58,7 +58,7 @@ export default {
 
         <div class="list">
             <ul>
-                <li v-for="(task, index) in todoList" :key="index">
+                <li v-for="(task, index) in todoList" :key="index" :class="task.completed === true ? 'completed' : ''">
                     {{ task.text }}
                 </li>
             </ul>
@@ -96,12 +96,17 @@ export default {
         padding: 30px;
         border-radius: 10px;
         background-color: #DEBACE;
+        border: 2px solid #7F669D;
     }
 
     ul li {
         margin-bottom: 10px;
         color: #7F669D;
         font-size: 18px;
+
+        &.completed {
+            text-decoration: line-through;
+        }
     }
 
     form {

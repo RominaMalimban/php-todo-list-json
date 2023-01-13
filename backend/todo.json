@@ -1,1 +1,38 @@
-[{"text":"Fare la spesa","completed ":true},{"text":"Stendere il bucato","completed ":true},{"text":"Preparare la cena","completed ":false},{"text":"Acquistare nuovo portatile","completed ":false},{"text":"Andare in banca","completed":false},{"text":"Comprare la torta","completed":false},{"text":"","completed":false},{"text":"","completed":false},{"text":"Fare Recap PHP","completed":false}]
+[
+    {
+        "text": "Fare la spesa",
+        "completed": true
+    },
+    {
+        "text": "Stendere il bucato",
+        "completed": true
+    },
+    {
+        "text": "Preparare la cena",
+        "completed": false
+    },
+    {
+        "text": "Acquistare nuovo portatile",
+        "completed ": false
+    },
+    {
+        "text": "Andare in banca",
+        "completed": true
+    },
+    {
+        "text": "Comprare la torta",
+        "completed": false
+    },
+    {
+        "text": "",
+        "completed": false
+    },
+    {
+        "text": "",
+        "completed": false
+    },
+    {
+        "text": "Fare Recap PHP",
+        "completed": false
+    }
+]
