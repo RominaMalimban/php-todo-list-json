@@ -1,7 +1,7 @@
 <script >
 import axios from 'axios';
 
-
+// salvo in una costante l'indirizzo del backend:
 const apiUrl = "http://localhost/";
 
 export default {
@@ -24,10 +24,9 @@ export default {
                     this.todoList = data;
                 })
         },
+        // funzione per aggiungere una nuova task:
         addNewTask(e) {
             e.preventDefault();
-
-            // const newTodoTask = this.newTask;
 
             const params = {
                 params: {
@@ -40,6 +39,14 @@ export default {
                     this.getAllData();
 
                     this.newTask = "";
+                })
+        },
+
+        // funzione per segnare un task come completato facendo click sul testo:
+        completedTask(index) {
+            axios.get(apiUrl + "completed.php", { params: { index } })
+                .then(() => {
+                    this.getAllData();
                 })
         }
     },
@@ -58,7 +65,11 @@ export default {
 
         <div class="list">
             <ul>
-                <li v-for="(task, index) in todoList" :key="index" :class="task.completed === true ? 'completed' : ''">
+
+                <!-- 1) aggiungo classe: se completed allora sbarrare -->
+                <!-- 2) aggiungo funzione "completedTask per segnare un task come completato  -->
+                <li v-for="(task, index) in todoList" :key="index" @click="completedTask(index)"
+                    :class="task.completed === true ? 'completed' : ''">
                     {{ task.text }}
                 </li>
             </ul>
@@ -96,7 +107,7 @@ export default {
         padding: 30px;
         border-radius: 10px;
         background-color: #DEBACE;
-        border: 2px solid #7F669D;
+        border: 3px solid #7F669D;
     }
 
     ul li {
