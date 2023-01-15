@@ -48,6 +48,19 @@ export default {
                 .then(() => {
                     this.getAllData();
                 })
+        },
+
+        // funzione per rimuovere un task:
+        removeTask(index) {
+
+            this.todoList.splice(index, 1);
+
+            axios.get(apiUrl + "remove.php", {
+                params: { index }
+                    .then(() => {
+                        this.getAllData();
+                    })
+            })
         }
     },
     mounted() {
@@ -71,7 +84,9 @@ export default {
                 <li v-for="(task, index) in todoList" :key="index" @click="completedTask(index)"
                     :class="task.completed === true ? 'completed' : ''">
                     {{ task.text }}
-                    <i class="fa-solid fa-trash"></i>
+
+                    <!-- aggiungo funzione "removeTask" per cancellare un task -->
+                    <i class="fa-solid fa-trash" @click="removeTask(index)"></i>
                 </li>
             </ul>
 
@@ -122,8 +137,6 @@ export default {
             }
         }
     }
-
-
 
     form {
         margin-top: 30px;
