@@ -52,15 +52,10 @@ export default {
 
         // funzione per rimuovere un task:
         removeTask(index) {
-
-            this.todoList.splice(index, 1);
-
-            axios.get(apiUrl + "remove.php", {
-                params: { index }
-                    .then(() => {
-                        this.getAllData();
-                    })
-            })
+            axios.get(apiUrl + "remove.php", { params: { index } })
+                .then(() => {
+                    this.todoList.splice(index, 1);
+                })
         }
     },
     mounted() {
@@ -81,9 +76,11 @@ export default {
 
                 <!-- 1) aggiungo classe: se completed allora sbarrare -->
                 <!-- 2) aggiungo funzione "completedTask per segnare un task come completato  -->
-                <li v-for="(task, index) in todoList" :key="index" @click="completedTask(index)"
-                    :class="task.completed === true ? 'completed' : ''">
-                    {{ task.text }}
+                <li v-for="(task, index) in todoList" :key="index">
+
+                    <span @click="completedTask(index)" :class="task.completed === true ? 'completed' : ''">
+                        {{ task.text }}
+                    </span>
 
                     <!-- aggiungo funzione "removeTask" per cancellare un task -->
                     <i class="fa-solid fa-trash" @click="removeTask(index)"></i>
@@ -97,7 +94,6 @@ export default {
         </div>
 
     </div>
-
 </template>
 
 <style lang="scss" scoped>
@@ -132,7 +128,7 @@ export default {
             display: flex;
             justify-content: space-between;
 
-            &.completed {
+            .completed {
                 text-decoration: line-through;
             }
         }
