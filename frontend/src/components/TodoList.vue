@@ -71,6 +71,7 @@ export default {
                 <li v-for="(task, index) in todoList" :key="index" @click="completedTask(index)"
                     :class="task.completed === true ? 'completed' : ''">
                     {{ task.text }}
+                    <i class="fa-solid fa-trash"></i>
                 </li>
             </ul>
 
@@ -108,17 +109,21 @@ export default {
         border-radius: 10px;
         background-color: #DEBACE;
         border: 3px solid #7F669D;
-    }
 
-    ul li {
-        margin-bottom: 10px;
-        color: #7F669D;
-        font-size: 18px;
+        ul li {
+            margin-bottom: 10px;
+            color: #7F669D;
+            font-size: 18px;
+            display: flex;
+            justify-content: space-between;
 
-        &.completed {
-            text-decoration: line-through;
+            &.completed {
+                text-decoration: line-through;
+            }
         }
     }
+
+
 
     form {
         margin-top: 30px;
